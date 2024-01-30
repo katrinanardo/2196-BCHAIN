@@ -20,7 +20,7 @@ function TrafficLight(props){
 export default function Appp(){
     return(
         <div className={`${isRainy === true ?  'red': 'green'}`}>
-            <TrafficLight />
+            <TrafficLight isRed={isRed} />
 
         </div>
     );
