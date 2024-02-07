@@ -23,4 +23,6 @@ contract LocalVariables {
     }
 }
 
-//Insights here
+//Local Variables limit variable accessibility, preventing conflicts and accidental modifications from other parts of the contract.
+//It is ideal for holding temporary data, intermediate calculations, function arguments, and return values. 
+//They promote modularity and code organization.
