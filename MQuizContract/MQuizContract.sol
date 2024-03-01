@@ -39,7 +39,7 @@ contract MQuizContract {
 
     function calculateTolSal() external onlyOwner returns (uint256){
         require(hourlyRate > 0, "Hourly Rate must be greater than 0");
-        require (hoursWorked > 0, "Hours Worked must be greater than 0");
+        require(hoursWorked > 0, "Hours Worked must be greater than 0");
         return totalSalary = hourlyRate * hoursWorked;
     }
 
