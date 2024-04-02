@@ -3,14 +3,24 @@
 pragma solidity ^0.8.10;
 
 contract EtherWallet {
-    event PaymentReceived(uint amount);
-    address payable public owner;
 
-    constructor() {
-        owner = payable(msg.sender);
-    }
+  address payable public owner;
 
-    receive() external payable { 
-        emit PaymentReceived(msg.value);
-    }
+  constructor() {
+    owner = payable(msg.sender);
+  }
+
+  receive() external payable {}
+
+  function withdraw(uint _amount) external {
+    require(msg.sender == owner, "Only owner can withdraw funds");
+
+    require(address(this).balance >= _amount, "Insufficient funds");
+    (bool success, ) = owner.call{value: _amount}("");
+    require(success, "Failed to withdraw Ether");
+  }
+
+  function getBalance() external view returns (uint) {
+    return address(this).balance;
+  }
 }
